@@ -1,7 +1,7 @@
 // Coloque aqui suas actions
 export const ADD_USER = 'ADD_USER';
 export const REQUEST_API = 'REQUEST_API';
-export const RECIVE_WALLET = 'ADD_WALLET';
+export const RECIVE_WALLET = 'RECIVE_WALLET';
 export const RECEIVE_API_FAIL = 'RECEIVE_API_FAIL';
 
 export const addUser = (payload) => ({
@@ -26,10 +26,10 @@ export const reciveApiFail = (error) => ({
 export const getCoins = () => async (dispatch) => {
   dispatch(requestApi());
   try {
-    const result = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const data = await result.json();
-    const currencies = Object.keys(data).filter((coin) => coin !== 'USDT');
-    dispatch(reciveWallet(currencies));
+    const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const data = await response.json();
+    const result = Object.keys(data).filter((coin) => coin !== 'USDT');
+    dispatch(reciveWallet(result));
   } catch (error) {
     dispatch(reciveApiFail(error));
   }
