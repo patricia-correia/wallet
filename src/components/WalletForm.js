@@ -74,8 +74,8 @@ class WalletForm extends Component {
               value={ payMethod }
             >
               <option value="dinheiro">Dinheiro</option>
-              <option value="cartao-debito">Cartão de Débito</option>
-              <option value="cartao-credito">Cartão de Crédito</option>
+              <option value="cartao-credito">Cartão de crédito</option>
+              <option value="cartao-debito">Cartão de débito</option>
             </select>
           </label>
           <label htmlFor="expenses">
