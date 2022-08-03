@@ -29,13 +29,13 @@ class Table extends Component {
                   <td>{coin.description}</td>
                   <td>{coin.tag}</td>
                   <td>{coin.method}</td>
-                  <td>{coin.value}</td>
-                  <td>{coin.exchangeRate[coin.currency].name}</td>
-                  <td>{ coin.exchangeRate[coin.currency].ask }</td>
+                  <td>{parseFloat(coin.value).toFixed(2)}</td>
+                  <td>{coin.exchangeRates[coin.currency].name}</td>
+                  <td>{parseFloat(coin.exchangeRates[coin.currency].ask).toFixed(2)}</td>
                   <td>
                     {
                       parseFloat((coin.value
-                        * (coin.exchangeRate[coin.currency].ask))
+                        * (coin.exchangeRates[coin.currency].ask))
                         .toFixed(2))
                     }
                   </td>

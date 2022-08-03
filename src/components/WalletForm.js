@@ -30,7 +30,7 @@ class WalletForm extends Component {
     this.setState({ [name]: value });
   }
 
-  getExchangeRates = async () => {
+  updateExchangeRates = async () => {
     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
     const data = await response.json();
     this.setState({
@@ -43,14 +43,10 @@ class WalletForm extends Component {
       id: prevState.id + 1,
       value: '',
       description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: ALIMENTACAO,
-      exchangeRates: {},
     }));
   }
 
-  somaExpenses = () => {
+  sommaExpenses = () => {
     const { sumExpenseDispatch } = this.props;
     const { value, currency, exchangeRates } = this.state;
     const currencys = exchangeRates[currency].ask;
@@ -59,11 +55,11 @@ class WalletForm extends Component {
     sumExpenseDispatch(total);
   }
 
-  updateExpenses = async () => {
+  addExpenses = async () => {
     const { getExpenseDispatch } = this.props;
-    await this.getExchangeRates();
+    await this.updateExchangeRates();
     getExpenseDispatch(this.state);
-    this.somaExpenses();
+    this.sommaExpenses();
     this.clearState();
   }
 
@@ -116,9 +112,9 @@ class WalletForm extends Component {
               onChange={ this.handleChange }
               value={ method }
             >
-              <option value="dinheiro">Dinheiro</option>
-              <option value="cartao-credito">Cartão de crédito</option>
-              <option value="cartao-debito">Cartão de débito</option>
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
             </select>
           </label>
           <label htmlFor="tag">
@@ -130,16 +126,16 @@ class WalletForm extends Component {
               value={ tag }
             >
               <option value={ ALIMENTACAO }>{ALIMENTACAO}</option>
-              <option value="lazer">Lazer</option>
-              <option value="trabalho">Trabalho</option>
-              <option value="transporte">Transporte</option>
-              <option value="saude">Saúde</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
             </select>
           </label>
 
           <button
             type="button"
-            onClick={ this.updateExpenses }
+            onClick={ this.addExpenses }
           >
             Adicionar despesas
           </button>
