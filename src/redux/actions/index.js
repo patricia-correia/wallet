@@ -3,6 +3,8 @@ export const ADD_USER = 'ADD_USER';
 export const REQUEST_API = 'REQUEST_API';
 export const RECIVE_WALLET = 'RECIVE_WALLET';
 export const RECEIVE_API_FAIL = 'RECEIVE_API_FAIL';
+export const GET_EXPENSES = 'GET_EXPENSES';
+export const SUM_EXPENSES = 'SUM_EXPENSES';
 
 export const addUser = (payload) => ({
   type: ADD_USER,
@@ -21,6 +23,16 @@ export const reciveWallet = (currencies) => ({
 export const reciveApiFail = (error) => ({
   type: RECEIVE_API_FAIL,
   error,
+});
+
+export const getExpenses = (state) => ({
+  type: GET_EXPENSES,
+  payload: state,
+});
+
+export const sumExpenses = (somma) => ({
+  type: SUM_EXPENSES,
+  payload: somma,
 });
 
 export const getCoins = () => async (dispatch) => {
