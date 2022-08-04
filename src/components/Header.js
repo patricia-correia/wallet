@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <div>
         <p data-testid="email-field">{ email }</p>
-        <span data-testid="total-field">{ totalSum }</span>
+        <span data-testid="total-field">{ Math.abs(totalSum).toFixed(2) }</span>
         <span data-testid="header-currency-field">BRL</span>
       </div>
     );

@@ -5,6 +5,8 @@ export const RECIVE_WALLET = 'RECIVE_WALLET';
 export const RECEIVE_API_FAIL = 'RECEIVE_API_FAIL';
 export const GET_EXPENSES = 'GET_EXPENSES';
 export const SUM_EXPENSES = 'SUM_EXPENSES';
+export const DELETE_EXPENSES = 'DELETE_EXPENSES';
+export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 
 export const addUser = (payload) => ({
   type: ADD_USER,
@@ -33,6 +35,16 @@ export const getExpenses = (state) => ({
 export const sumExpenses = (somma) => ({
   type: SUM_EXPENSES,
   payload: somma,
+});
+
+export const deleteExpenses = (remove) => ({
+  type: DELETE_EXPENSES,
+  payload: remove,
+});
+
+export const updateExpenses = (update) => ({
+  type: UPDATE_EXPENSES,
+  payload: update,
 });
 
 export const getCoins = () => async (dispatch) => {
