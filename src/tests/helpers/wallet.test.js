@@ -104,6 +104,10 @@ describe('Testa a tela Wallet', () => {
     expect(methodInput).toBeInTheDocument();
     expect(tagInput).toBeInTheDocument();
     expect(button).toBeInTheDocument();
-
+    
+    userEvent.type(valueInput, 10);
+    userEvent.type(descriptInput, 'comida');
+    userEvent.click(button);
+    
   });
 });
