@@ -18,7 +18,7 @@ class Table extends Component {
   }
 
   render() {
-    const { expenses } = this.props;
+    const { expense } = this.props;
     return (
       <div>
         <table>
@@ -37,7 +37,7 @@ class Table extends Component {
           </thead>
 
           {
-            expenses.map((coin) => (
+            expense.map((coin) => (
               <tbody key={ coin.id }>
                 <tr>
                   <td>{coin.description}</td>
@@ -55,7 +55,13 @@ class Table extends Component {
                   </td>
                   <td>Real</td>
                   <td>
-                    <button type="button">Editar</button>
+                    <button
+                      type="button"
+                      data-testid="edit-btn"
+                      // onClick={ }
+                    >
+                      Editar
+                    </button>
                     <button
                       type="button"
                       data-testid="delete-btn"
@@ -75,13 +81,13 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  expense: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteExpensesDispatch: PropTypes.func.isRequired,
   updateExpensesDispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  expenses: state.wallet.expenses,
+  expense: state.wallet.expenses,
 });
 
 const mapDispatchToProps = (dispatch) => ({

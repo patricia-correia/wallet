@@ -132,13 +132,13 @@ class WalletForm extends Component {
               <option value="Saúde">Saúde</option>
             </select>
           </label>
-
           <button
             type="button"
             onClick={ this.addExpenses }
           >
             Adicionar despesas
           </button>
+
         </form>
       </div>
     );
@@ -154,6 +154,9 @@ WalletForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  expenses: state.wallet.expenses,
+  idToEdit: state.wallet.idToEdit,
+  editor: state.wallet.editor,
 });
 
 const mapDispatchToProps = (dispatch) => ({
